@@ -1,0 +1,66 @@
+<%- layout('layout/boilerplate') -%>
+  <%- include('partials/nav') -%>
+  <%- include('partials/flash') -%>
+    <link rel="stylesheet" href="/CSS/gallery.css">
+
+    <% if (link[0].mimeType!='application/vnd.google-apps.folder') { %>
+      <div id="gallery">
+        <% link.forEach(element=> { %>
+          <a href="http://drive.google.com/uc?export=view&id=<%=element.id%>" target="_blank">
+            <img class="image" data-img="http://drive.google.com/uc?export=view&id=<%=element.id%>">
+          </a>
+          <% }) %>
+      </div>
+      <% } else { %>
+        <div class="container my-5">
+
+          <table class="table table-striped table-hover table-bordered text-center">
+                          <tbody>
+                            <% link.forEach(element=> { %>
+                              <tr>
+                                <th><a href="/gallery/<%=element.id%>"><%=element.name %> </a></th>
+                              </tr>
+                              
+                            
+                              <% }) %>
+                             
+                          </tbody>
+
+                         
+
+          </table>
+      </div>
+        
+    <% }%>
+      
+    
+
+    <%- include('partials/footer') -%>
+
+      <script>
+
+        let options = {
+          root: null,
+          rootMargin: '0px 0px 200px 0px',
+          threshold: 0.5
+        }
+        let callback = (entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && entry.target.className === 'image') {
+              let imgurl = entry.target.getAttribute('data-img');
+              if (imgurl) {
+                entry.target.src = imgurl;
+                observer.unobserve(entry.target)
+              }
+            }
+
+          });
+        }
+        let observer = new IntersectionObserver(callback, options);
+        let a = document.querySelectorAll('.image')
+        a.forEach(ele => {
+          observer.observe(ele)
+        })
+
+
+      </script>

@@ -1,0 +1,34 @@
+<%- layout('layout/boilerplate') -%>
+  <%- include('../partials/nav') -%>
+  <div class="container my-5">
+<% let i=0 %> 
+    <table class="table table-striped table-hover table-bordered text-center">
+
+            <thead>
+                
+                <th>S.No</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th><i class="fa-solid fa-link"></i>Link</th>  
+            </thead>
+                    <tbody>
+                        <% for( let act of found ) { %>
+                            <tr>
+                                <td><%=++i%> </td>
+                                <td><b><%= act.activity_name %> </b></td>
+                                <td><%=act.date.getDate()%>-<%=act.date.toLocaleString('default', { month: 'short' });%>-<%=act.date.getFullYear()%></td>
+                                <td> <a href="/activity/<%=act._id%>" >View</a></td>
+                            </tr>
+                        
+                        <% } %>
+                        
+                    </tbody>
+
+                   
+
+    </table>
+</div>
+
+
+
+<%- include('../partials/footer') -%>

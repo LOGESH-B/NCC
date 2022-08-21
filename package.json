@@ -1,0 +1,26 @@
+{
+  "name": "ncc-official",
+  "version": "1.0.0",
+  "description": "Created on 2022",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "LOGESH\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[DCDT LOGESH",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^16.0.0",
+    "ejs-mate": "^4.0.0",
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
+    "googleapis": "^105.0.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.2.7",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^7.0.0"
+  }
+}

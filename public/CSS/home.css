@@ -1,0 +1,95 @@
+.animate__animated.animate__fadeInRight {
+  --animate-duration: 1.5s;
+}
+
+.twitter {
+  --bs-gutter-x: 0;
+}
+
+.twitter-loader {
+  width: 35px;
+  height: 35px;
+  border: 4px solid #1da1f2;
+  border-top-color: #a5d9fa;
+  border-radius: 50%;
+  animation: rotate .7s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+body>div:nth-child(9)>div>div.col-md-9>div>div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+  padding-bottom: 15px;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.swiper-slide {
+
+  font-size: 18px;
+  /* background: #fff; */
+  height: 80vh;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+
+
+.gradient {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+  left: 0;
+  background-position: center;
+  background-size: cover;
+  top: 0;
+  background-blend-mode: overlay;
+}
+
+.swiper-slide .demo-content {
+
+  position: relative;
+}
+
+/* paralax */
+.para1 {
+  background-image: url("https://drive.google.com/uc?id=1N0yJxFztgy5Cu3TLdOeuKR18HDB1GR9c");
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+/* a tag */
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.blur{
+  backdrop-filter: blur(2px);
+  line-height:30px;
+
+} 

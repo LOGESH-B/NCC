@@ -1,0 +1,25 @@
+<%- layout('layout/boilerplate') -%>
+  <%- include('../partials/nav') -%>
+
+    <div class="container">
+        <form action="/slider_add" class="needs-validation" method="post" novalidate>
+            <fieldset>
+                <legend class="text-center">Add Slider</legend>
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control mb-2" id="title" name="title" required>
+                
+                <label for="discription" class="form-label">Discription</label>
+                <textarea name="discription" class="form-control mb-2" id="discription" style="height: 150px;" required></textarea>
+                <label for="cover_img" class="form-label">Cover Image</label>
+                <input type="text" class="form-control mb-2" id="cover_img" name="cover_img" placeholder="Image url" required>
+                
+                <button type="submit" class="btn btn-success">Submit</button>
+            </fieldset>
+        </form>
+        
+    </div>
+    <script src="/js/validation.js"></script>
+
+
+    <%- include('../partials/footer') -%>
+

@@ -1,0 +1,243 @@
+<%- layout('layout/boilerplate') -%>
+  <%- include('../partials/nav') -%>
+    <%- include('../partials/flash') -%>
+
+      <link rel="stylesheet" href="/CSS/home.css">
+      <link rel="stylesheet" href="/CSS/recent_curosel.css">
+
+
+      <div class="">
+        <% if (currentUser) { %>
+          <a href="/slider_add" class="btn mx-3 float-end btn-success">Add</a>
+          <% } %>
+
+            <div class="row twitter">
+              <!-- Swiper -->
+              <div class="col-md-9">
+
+                <div class="swiper mySwiper  mt-3">
+                  <div class="swiper-wrapper">
+                    <% for(let slide of sliders) { %>
+                      <div class="swiper-slide">
+                        <div class="gradient" style="background-image:url('https://drive.google.com/uc?id=<%=slide.cover_img%>'), 
+            linear-gradient(90deg, rgba(254,254,254,1) 10%, rgba(244,244,244,0) 70%);">
+                        </div>
+                        <div class="demo-content" style="width: 100%;">
+                          <div class="offset-1" style="float:left;">
+                            <h1 class="pb-3 animate__animated animate__fadeInRight">
+                              <%=slide.title%>
+                            </h1>
+                            <p class="pb-3 animate__animated animate__fadeInRight" style="width:50%;">
+                              <%=slide.discription%>
+                            </p>
+                            <a class="btn   btn-info animate__animated animate__fadeInRight px-4" style="z-index: 10;"
+                              href="/aboutkec">View</a>
+                            <% if (currentUser) { %>
+                              <a class="btn   btn-success animate__animated animate__fadeInRight px-4"
+                                style="z-index: 10;" href="/slider/<%=slide._id%>/edit">Edit</a>
+                              <% } %>
+
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <% } %>
+                  </div>
+
+                  <div class="swiper-pagination"></div>
+                </div>
+              </div>
+              <!-- twitter -->
+              <div class="col-md-3 ">
+
+                <div class="d-flex justify-content-center w-100 h-100 align-items-center" id="twitter">
+                  <div class="text-center">
+                    <div>
+                      <a href="https://twitter.com/KecNcc" target="_blank"> <i class="fa-brands fa-twitter fs-1 px-3"
+                          style="color: #1DA1F2;"></i><br>
+                        <p class="text-muted">#KecNcc</p>
+                      </a>
+                    </div>
+                    <div class="ps-3 d-flex  ">
+                      <span class="twitter-loader "></span>
+                    </div>
+                  </div>
+                </div>
+                <div id="page">
+                  <!-- twitter -->
+                  <a class="twitter-timeline" data-height="678.750" data-chrome="nofooter noheader noborders"
+                    href="https://twitter.com/KecNcc?ref_src=twsrc%5Etfw">Tweets by KecNcc</a>
+                  <script onerror="loaded()" async src="https://platform.twitter.com/widgets.js"
+                    charset="utf-8"></script>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <section id="recent_activity">
+              <div class="container">
+                <h1 class="fw-5 pt-5 pt-3">Recent Activity
+                  <% if (currentUser) { %>
+                    <a href="/activity_add" class="btn mx-3 float-end btn-success">Add</a>
+                    <% } %>
+
+                </h1>
+                <hr>
+                <div class="row mx-auto my-auto">
+                  <div id="myCarousel" class="carousel slide w-100" data-ride="carousel">
+                    <div class="carousel-inner w-100 ">
+                      <% for( let activity of found.reverse()) { %>
+                        <div class="carousel-item">
+                          <div class="col-sm-12 col-lg-4 re-item">
+                            <div class="card" style="width: 100%;">
+                              <div class="img"
+                                style="background-image:url('https://drive.google.com/uc?id=<%=activity.cover_img%>');">
+                              </div>
+                              <div class="card-body">
+                                <h5 class="card-title">
+                                  <%=activity.activity_name%>
+                                </h5>
+                                <p class="text-muted f"><small>
+                                    <%=activity.date.getDate()%>-<%=activity.date.toLocaleString('default', {
+                                        month: 'short' });%>-<%=activity.date.getFullYear()%>
+                                  </small></p>
+                                <p class="card-text">
+                                  <%=activity.brief_discription.slice(0,160) %>...
+                                </p>
+                                <a href="/activity/<%=activity._id%>" class="btn btn-primary">Read More</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <% } %>
+
+
+
+
+
+                    </div>
+                    <button class="carousel-control-prev text-black" type="button"
+                      style="z-index:0 ;height: 50%;padding-top: 25vh;" data-bs-target="#myCarousel"
+                      data-bs-slide="prev">
+                      <span class=" " aria-hidden="true"><i class="fas fa-xl fa-duotone fa-backward"></i></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next text-black" style="z-index:0 ;height: 50%;padding-top: 25vh;"
+                      type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                      <span class="" aria-hidden="true"><i class="fas fa-xl fa-duotone fa-forward"></i></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+
+            <!-- Paralax 1 -->
+            <div class="para1">
+            </div>
+
+            <!-- about KecNCC -->
+            <div class="container my-5 about_kec">
+              <div class="blur">
+                <h2>About KEC-NCC</h2>
+                <p class=" "style="font-size:18px;letter-spacing 2px;">KEC NCC Army Wing was inaugurated by <b>Lt Col. Ramesh Menon</b> on <b>10/12/2003</b> , in the
+                  presence of the then commanding
+                  officer of <b>15 (TN) BN NCC Erode.</b>  <b>Lt Col. M.K. Balakrishnan.</b>
+                  <b> Shri. M.N. Ramasamy,</b> the Correspondent, Kongu Engineering College presided over the function.<b> Dr.
+                    A.M. Natarajan,</b> the Principal, Kongu Engineering College delivered the Principal Address. Mr. T.
+                  Periyasamy, the then caretaker of Kongu Engineering College, NCC unit organized the NCC unit Inaugral
+                  Program. <br>KEC NCC Air Wing was inaugurated by <b> Wg Cdr K. Jayandan</b>, the Commanding Officer, <b>5(TN) AIR SQN (TECH) NCC</b> ,
+                  SALEM on <b>18/09/2019</b> . <b>Thiru P. Sachithanandan</b> , the Correspondent, Kongu Engineering College presided over the
+                  inaugural and <b> Dr.V. Balusamy</b>, the Principal, Kongu Engineering College delivered the felicitation address. The
+                  Welcome address was delivered by <b>Major Dr P.S. Raghavendran</b> , Company Commander, Kongu Engineering College. <b>Mr.
+                    A. Jeevanantham</b> , the then Care Taker of NCC Air Wing organized the Air Wing Inaugral program.
+                   <a href="/aboutkec" style="color: blue;">Read More</a>
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <%- include('../partials/footer') -%>
+
+              <!-- Swiper JS -->
+              <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+              <!-- Home Script -->
+              <script>
+                // Swiper.js
+                var swiper = new Swiper(".mySwiper", {
+                  spaceBetween: 30,
+
+                  autoplay: {
+                    delay: 5000,
+                  },
+                  pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                  },
+
+                });
+
+                // recent curosel
+                //make first card as active class
+                document.getElementsByClassName('carousel-item')[0].classList.add('active')
+
+                $('.carousel .carousel-item').each(function () {
+                  var minPerSlide = 3;
+                  var next = $(this).next();
+                  if (!next.length) {
+                    next = $(this).siblings(':first');
+                  }
+                  next.children(':first-child').clone().appendTo($(this));
+
+                  for (var i = 0; i < minPerSlide; i++) {
+                    next = next.next();
+                    if (!next.length) {
+                      next = $(this).siblings(':first');
+                    }
+
+                    next.children(':first-child').clone().appendTo($(this));
+                  }
+                });
+
+
+                //twitter preloader
+                let load = 1
+                function loaded() {
+                  load = 0
+                }
+                let twitter = document.getElementById('page');
+                twitter.style.display = 'none'
+                let spinnerWrapper = document.getElementById('twitter');
+                window.addEventListener('load', function () {
+                  if (load) {
+                    spinnerWrapper.style.display = 'none';
+                    twitter.style.display = 'block'
+                    spinnerWrapper.parentElement.removeChild(spinnerWrapper);
+
+                  }
+                });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </script>

@@ -1,0 +1,14 @@
+<%- layout('layout/boilerplate') -%>
+  <%- include('../partials/nav') -%>
+
+<div class="text-center container">
+    <form action="/signup" method="post">
+        Email:<input type="email" name="username" class="form-control" required><br>
+  
+        Password:<input type="password" name="password"  class="form-control" required><br>
+        <button type="submit" class="btn btn-success" > Submit</button>
+    </form>
+
+</div>
+
+<%- include('../partials/footer') -%>

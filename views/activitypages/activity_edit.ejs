@@ -1,0 +1,49 @@
+<%- layout('layout/boilerplate') -%>
+  <%- include('../partials/nav') -%>
+
+    <div class="container">
+        <form action="/activity/<%=event._id%>/edit?_method=PUT" class="needs-validation" method="post" novalidate>
+            <fieldset>
+                <legend class="text-center">Add Activity</legend>
+                <label for="name" class="form-label">Activity Name</label>
+                <input type="text" class="form-control mb-2" id="name" name="activity_name" value="<%=event.activity_name%>" required>
+                <label for="date" class="form-label my-3">Date :</label>
+                <input type="date" class=" mb-2" id="date" name="date" required value="<%=event.date%>"><br>
+                <label for="brief_discription" class="form-label">Brief Discription(min 160Characters)</label>
+                <input type="text" class="form-control mb-2" id="brief_discription" name="brief_discription" minlength="160" value="<%=event.brief_discription%>" required>
+                <label for="discription" class="form-label">Discription</label>
+                <textarea name="discription" class="form-control mb-2" id="discription" style="height: 150px;" required><%=event.discription%></textarea>
+                <label for="cover_img" class="form-label">Cover Image</label>
+                <input type="text" class="form-control mb-2" id="cover_img" name="cover_img" placeholder="Image url" value="<%=event.cover_img%>" required>
+                <label for="images" class="form-label">Image Links</label>
+                <div id="img_links">
+                    <% for(let link of event.img) { %>
+                        <input type="text" class="form-control my-2" id="images" name="img" placeholder="Image url" value="<%=link%>">
+                    
+                    <% } %>
+                </div>
+                
+                <button id="add" type="button" class="btn btn-outline-success fs-5 my-3">+</button><br>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </fieldset>
+        </form>
+        
+    </div>
+    <script src="/js/validation.js"></script>
+    <script>
+        bttn=document.getElementById('add');
+        img_link=document.getElementById('img_links')
+        bttn.addEventListener("click",()=>{
+        var input = document.createElement("input");
+                input.type = "text";
+                input.name = "img";
+                input.className="form-control my-2"
+                input.placeholder="Image Url"
+                img_link.appendChild(input);
+          //  img_link.innerHTML+='<input type="text" class="form-control mt-2" id="images" name="img" placeholder="Image url">'
+        })
+    </script>
+
+<%- include('../partials/footer') -%>
+
+

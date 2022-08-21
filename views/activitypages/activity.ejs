@@ -1,0 +1,140 @@
+<%- layout('layout/boilerplate') -%>
+  <%- include('../partials/nav') -%>
+
+        <style>
+            /* activity swiper */
+
+            .swiper-slide {
+                text-align: center;
+                font-size: 18px;
+                background: #fff;
+
+                /* Center slide text vertically */
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                -webkit-justify-content: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                -webkit-align-items: center;
+                align-items: center;
+            }
+
+            .img1 {
+                display: block;
+                width: 100%;
+                height: 100px;
+                object-fit: cover;
+            }
+
+            .img {
+                display: block;
+                width: 100%;
+                height: 750px;
+                object-fit: contain;
+
+            }
+
+            .swiper-button-next,
+            .swiper-button-prev {
+                color: black;
+            }
+
+            .mySwiper {
+                height: 20%;
+                box-sizing: border-box;
+                padding: 10px 0;
+            }
+
+            .mySwiper .swiper-slide {
+                width: 25%;
+                height: 100%;
+                opacity: 0.4;
+            }
+        </style>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6"> 
+                    <p class="text-muted " > Activity/Event Name: </p>
+                    <% if (currentUser) { %>
+                        <a href="/activity/<%=event._id%>/delete" class="btn btn-danger float-end ms-4">Delete</a>
+                        <a href="/activity/<%=event._id%>/edit" class="btn btn-success float-end px-4">Edit</a>
+                        
+                      <% } %>
+                    
+                    <h2><%= event.activity_name %> </h2> <br>
+                    <p class="text-muted">Discription:</p>
+                    <p><%= event.brief_discription %>
+                        
+                    </p>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img width="100%" style="max-height:400px ;"
+                        src="https://drive.google.com/uc?id=<%= event.cover_img %> "
+                        class="img-responsive img-thumbnail" alt="">
+                </div>
+            </div>
+            <div class="my-5">
+                <h2>About the Activity</h2>
+                <p><%= event.discription %></p>
+            </div>
+            <div>
+                <h2>Photos</h2>
+                <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
+                    <div class="swiper-wrapper">
+                        <% event.img.forEach(element => { %>
+                            <div class="swiper-slide">
+                                <img class="img" src="https://drive.google.com/uc?id=<%= element %> " />
+                            </div>
+                         
+                        <% }) %>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+                <div thumbsSlider="" class="swiper mySwiper">
+                    <div class="swiper-wrapper">    
+                        <% event.img.forEach(element => { %>
+                            <div class="swiper-slide">
+                                <img class="img1" src="https://drive.google.com/uc?id=<%= element %> " />
+                            </div>
+                         
+                        <% }) %>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- swiper.js -->
+        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+<script>
+    //  activity swiper
+var swiper = new Swiper(".mySwiper", {
+  spaceBetween: 10,
+  slidesPerView: 4,
+  freeMode: true,
+  watchSlidesProgress: true,
+});
+var swiper2 = new Swiper(".mySwiper2", {
+  spaceBetween: 10,
+  navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+  },
+  thumbs: {
+      swiper: swiper,
+  },
+});
+</script>
+
+<%- include('../partials/footer') -%>

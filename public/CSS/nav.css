@@ -1,0 +1,81 @@
+svg{
+    color: white;
+}
+
+/* icon glow */
+ul li .nav-link,ul li .nav-link:hover{
+  color: black;
+}
+
+
+#drop{
+  /*background-image: linear-gradient(to right, #ee1b22, #e40047, #ce0064, #ac007c, #80148c, #68319d, #4843a8, #1050af, #0068c2, #007fd3, #0096e2, #00adef); */
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+  
+}
+#drop {
+position: relative;
+}
+
+#drop:before {
+content: ' ';
+display: block;
+position: absolute;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+opacity: 0.6;
+/* background-image: url('/image/ncc-logo-fade.png'); */
+background-repeat: no-repeat;
+background-position: 50% 0;
+background-size: cover;
+}
+
+#drop .dropdown-item{
+position: relative;
+}
+
+@media only screen and (max-width: 600px) {
+#img2{
+  display: none;
+}
+}
+@media only screen and (max-width: 767px) {
+#nav2{
+  margin-top: 100px;
+}
+}
+@media only screen and (min-width: 767px) and (max-width:990px) {
+#nav2{
+  margin-top: 80px;
+}
+}
+@media only screen and ( max-width: 480px)  {
+#nav2{
+  margin-top: 165px;
+}
+}
+
+
+
+/* footer */
+.fa-youtube:hover {
+  color: #FF0000;
+}
+
+.fa-instagram:hover {
+  color: #fd5949;
+}
+
+.fa-twitter:hover {
+  color: #1DA1F2;
+}
+.dev{
+  font-size: smaller;
+}
+
+
+    

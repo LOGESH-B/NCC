@@ -1,0 +1,66 @@
+<%- layout('layout/boilerplate') -%>
+  <%- include('../partials/nav') -%>
+
+
+        <div class="container">
+            <h3><%= value %> </h3>
+            <hr style="width:75%">
+            <div class="row text-center">
+              
+                  
+                        <div class="col-md-4 mt-3">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <th>Common</th>
+                                </thead>
+                                <tbody>
+                                    <% list[2].forEach(element => { %>
+                                     <tr>
+                                        <td><a href="http://drive.google.com/uc?export=view&id=<%=element.id%>" target="_blank"><%=element.name.split('.').slice(0, -1).join('.')%> </a> </td>
+                                     </tr>
+                                    <% }) %>
+                                </tbody>
+
+                            </table>
+                        </div>
+                        <div class="col-md-4 mt-3">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <th>Army</th>
+                                </thead>
+                                <tbody>
+                                    <% list[0].forEach(element => { %>
+                                        <tr>
+                                           <td><a href="http://drive.google.com/uc?export=view&id=<%=element.id%>" target="_blank"><%=element.name.split('.').slice(0, -1).join('.')%></a> </td>
+                                        </tr>
+                                       <% }) %>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                        <div class="col-md-4 mt-3">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <th>Air</th>
+                                </thead>
+                                <tbody>
+                                    <% list[1].forEach(element => { %>
+                                        <tr>
+                                           <td><a href="http://drive.google.com/uc?export=view&id=<%=element.id%>" target="_blank"><%=element.name.split('.').slice(0, -1).join('.')%></a> </td>
+                                        </tr>
+                                       <% }) %>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                        
+
+            </div>
+        </div>
+
+
+
+        <%- include('../partials/footer') -%>
